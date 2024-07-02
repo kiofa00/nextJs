@@ -9,13 +9,10 @@ export default function Home() {
 		// router.push("/about/post")
 		router.back();
 	}
+
 	return (
 		<div>
-			<Link href="/about">About</Link>
-			<br />
-			<button type="button" onClick={handleClick}>
-				About/Post
-			</button>
+			<Link href="/products">Products</Link>
 		</div>
 	);
 }
