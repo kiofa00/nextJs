@@ -11,13 +11,11 @@ export default function Home() {
 	}
 	return (
 		<div>
-			<Link href="/about">
-				About
-			</Link>
-			{/* <br />
+			<Link href="/about">About</Link>
+			<br />
 			<button type="button" onClick={handleClick}>
 				About/Post
-			</button> */}
+			</button>
 		</div>
 	);
 }

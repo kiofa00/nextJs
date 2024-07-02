@@ -1,10 +1,20 @@
-'use client'
-
-import Link from 'next/link';
+// 'use client';
 import React from 'react';
 
-export interface AboutProps {}
+export const getProducts = async () => {
+	const data = await fetch('https://dummyjson.com/products', { cache: 'force-cache' });
+	const products = await data.json();
+	return products.products;
+};
 
-export default function Aboutpage(props: AboutProps) {
-	return <Link href="/">About Page</Link>;
+export default async function Aboutpage() {
+	const products = await getProducts();
+
+	return (
+		<div>
+			{products.map((product: any, index: any) => (
+				<div key={index}>{product.title}</div>
+			))}
+		</div>
+	);
 }
