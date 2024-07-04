@@ -1,20 +1,19 @@
-// 'use client';
+'use client';
 
-async function getProduct(id: number) {
-	const res = await fetch('https://dummyjson.com/products/' + id, {
-		next: {
-			revalidate: 60,
-		},
-	});
-	if (!res.ok) {
-		throw new Error('Failed to fetch data');
-	}
-	return res.json();
-}
+import dynamic from 'next/dynamic';
+import { useParams } from 'next/navigation';
 
-export default async function ProductDetail({ params }: any) {
-	const productId = params.productId;
-	const product = await getProduct(productId);
+const ProductDetails = dynamic(() => import('./productDetails'), { ssr: false });
 
-	return <div>{product.title}</div>;
-}
+const Page: React.FC = () => {
+  const params = useParams<{ productId: string }>();
+  const { productId } = params;
+
+  return (
+    <main>
+      <ProductDetails params={{ productId }} />
+    </main>
+  );
+};
+
+export default Page;

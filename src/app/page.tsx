@@ -13,6 +13,8 @@ export default function Home() {
 	return (
 		<div>
 			<Link href="/products">Products</Link>
+			<br/>
+			<Link href="/about">About</Link>
 		</div>
 	);
 }
